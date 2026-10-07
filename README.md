@@ -4,7 +4,13 @@ A new Android project that **recreates the UI, theme, navigation and user-facing
 of the analyzed APK (`com.cmaster.cloner` "Clone Master" v2.8.0.10), built from scratch —
 no proprietary code was copied.
 
-## Build
+## Repo & APK release
+
+Repo: `myclone`. Creating a GitHub **Release** (tag `v*`) triggers the included
+`.github/workflows/release.yml`, which builds the debug APK in CI and attaches it
+(`app-debug.apk`) to the release automatically.
+
+## Build locally
 
 ```bash
 cd CloneMasterRecreated

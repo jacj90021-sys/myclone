@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.recreated.clonemaster.App
@@ -34,8 +35,8 @@ class ScanHistoryActivity : AppCompatActivity() {
         b.recyclerView.layoutManager = LinearLayoutManager(this)
         val fmt = SimpleDateFormat("MMM d, HH:mm:ss", Locale.US)
         lifecycleScope.launch {
-            androidx.lifecycle.repeatOnLifecycle(androidx.lifecycle.Lifecycle.State.STARTED) {
-                App.get().db.scanDao.all().collect { items ->
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                App.get().db.scanDao().all().collect { items ->
                     b.recyclerView.adapter = object : RecyclerView.Adapter<HistoryHolder>() {
                         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
                             HistoryHolder(

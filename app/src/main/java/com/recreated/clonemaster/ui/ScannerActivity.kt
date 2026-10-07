@@ -84,7 +84,7 @@ class ScannerActivity : AppCompatActivity() {
                             toast(value)
                             lifecycleScope.launch {
                                 kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
-                                    App.get().db.scanDao.add(
+                                    App.get().db.scanDao().add(
                                         com.recreated.clonemaster.db.ScanEntity(content = value)
                                     )
                                 }

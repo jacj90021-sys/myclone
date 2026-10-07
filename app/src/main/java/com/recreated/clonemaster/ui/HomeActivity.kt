@@ -9,6 +9,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,7 +44,7 @@ class HomeActivity : AppCompatActivity() {
         b.ivClearSearch.setOnClickListener { b.etSearchSimple.setText(""); query = ""; refresh() }
 
         lifecycleScope.launch {
-            androidx.lifecycle.repeatOnLifecycle(androidx.lifecycle.Lifecycle.State.STARTED) {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
                 App.get().db.spaceDao().all().collect { list ->
                     spaces.clear(); spaces.addAll(list)
                     b.viewLoading.visibility = android.view.View.GONE

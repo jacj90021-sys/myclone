@@ -11,6 +11,7 @@ import androidx.camera.core.CameraSelector
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
+import androidx.lifecycle.lifecycleScope
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.core.content.ContextCompat
 import com.google.mlkit.vision.barcode.BarcodeScanning
@@ -81,9 +82,13 @@ class ScannerActivity : AppCompatActivity() {
                     codes.firstOrNull()?.rawValue?.let { value ->
                         runOnUiThread {
                             toast(value)
-                            App.get().db.scanDao.add(
-                                com.recreated.clonemaster.db.ScanEntity(content = value)
-                            )
+                            lifecycleScope.launch {
+                                kotlinx.coroutines.withContext(kotlinx.coroutines.Dispatchers.IO) {
+                                    App.get().db.scanDao.add(
+                                        com.recreated.clonemaster.db.ScanEntity(content = value)
+                                    )
+                                }
+                            }
                         }
                     }
                 }

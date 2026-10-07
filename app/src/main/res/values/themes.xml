@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Original uses stock Material Component styles with a green primary; no custom fonts found (no TTF/OTF in APK). -->
+<resources>
+    <style name="Theme.CloneMaster" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorPrimaryContainer">@color/green_light</item>
+        <item name="colorOnPrimaryContainer">@color/text_primary</item>
+        <item name="colorSecondary">@color/green_dark</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/green_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
+
+    <style name="Widget.CloneMaster.Toolbar" parent="Widget.Material3.Toolbar">
+        <item name="titleTextAppearance">@style/TextAppearance.CloneMaster.Title</item>
+    </style>
+
+    <style name="TextAppearance.CloneMaster.Title" parent="TextAppearance.Material3.TitleLarge">
+        <item name="android:textColor">@color/text_primary</item>
+    </style>
+</resources>
